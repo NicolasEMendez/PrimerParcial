@@ -17,8 +17,12 @@ namespace Comun
         public int MenuId { get; set; }
         public string Descripcion { get; set; }
 
+        /// <summary>
+        /// Imprime a la consola todos los items del Menu.
+        /// </summary>
         public void ImprimirALaConsola()
         {
+            Console.Clear();
             Console.WriteLine(Descripcion);
             Console.WriteLine("");
 
@@ -28,24 +32,6 @@ namespace Comun
             }
 
             Console.WriteLine("");
-        }
-
-        public Menu CrearMenu(int id, string descripcion, IEnumerable<MenuItem> menuItems)
-        {
-            Menu menu = new Menu()
-            {
-                MenuId = id,
-                Descripcion = descripcion
-            };
-
-            menu.MenuItems.AddRange(MenuItems);
-
-            return menu;
-        }
-
-        public Menu CrearMenu(int id, string descripcion, params MenuItem[] menuItems)
-        {
-            return CrearMenu(id, descripcion, menuItems);
         }
     }
 }

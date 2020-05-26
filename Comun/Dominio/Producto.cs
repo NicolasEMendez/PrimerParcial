@@ -8,7 +8,7 @@ namespace Comun.Dominio
 {
     public class Producto
     {
-        private int IdProducto { get; set; }
+        public int IdProducto { get; set; }
         public string NombreProducto { get; set; }
         public TipoCategoria TipoCategoria { get; set; }
         public Inventario Inventario { get; set; }

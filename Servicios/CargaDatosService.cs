@@ -11,11 +11,21 @@ namespace Servicios
             CargaProductosInicial(ref productos);
         }
 
+        /// <summary>
+        /// Carga el producto a la lista
+        /// </summary>
+        /// <param name="productos">La lista de productos</param>
+        /// <param name="productoNuevo">El nuevo producto</param>
         public void CargaProducto(ref List<Producto> productos, Producto productoNuevo)
         {
             productos.Add(productoNuevo);
         }
 
+        /// <summary>
+        /// Carga los productos iniciales
+        /// </summary>
+        /// <param name="productos">La lista de productos</param>
+        /// <returns></returns>
         public List<Producto> CargaProductosInicial(ref List<Producto> productos)
         {
             Producto producto = new Producto()

@@ -13,11 +13,10 @@ namespace Comun
 
         public List<Menu> Menus { get; set; }
 
-        public void AdherirMenu(Menu menu)
-        {
-            Menus.Add(menu);
-        }
-
+        /// <summary>
+        /// Muestra el menu segun el Id del menu
+        /// </summary>
+        /// <param name="id">Id del menu</param>
         public void MostrarMenu(int id)
         {
             var menuPresente = Menus.Where(m => m.MenuId == id)
@@ -28,9 +27,8 @@ namespace Comun
             Console.WriteLine($"Seleccione una opcion");
             string opcionSeleccionada = Console.ReadLine();
 
-            int indiceOpcion;
 
-            if (!int.TryParse(opcionSeleccionada, out indiceOpcion) || indiceOpcion < 0 || indiceOpcion > menuPresente.MenuItems.Count)
+            if (!int.TryParse(opcionSeleccionada, out int indiceOpcion) || indiceOpcion < 0 || indiceOpcion > menuPresente.MenuItems.Count)
             {
                 Console.Clear();
 

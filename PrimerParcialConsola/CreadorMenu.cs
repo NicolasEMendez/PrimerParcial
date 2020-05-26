@@ -19,6 +19,10 @@ namespace PrimerParcialConsola
             coleccionMenu = new ColeccionMenu();
         }
 
+        /// <summary>
+        /// Crea Toda la estructura del menu
+        /// </summary>
+        /// <returns></returns>
         public ColeccionMenu CrearCollecionMenu()
         {
             coleccionMenu = new ColeccionMenu()
@@ -28,14 +32,20 @@ namespace PrimerParcialConsola
                     CrearMenuPrincipal(),
                     CrearSubMenuMostrarProducto(),
                     CrearSubMenuCategoria(),
-                    CrearSubMenuSegunStock()
+                    CrearSubMenuSegunStock(),
+                    CrearSubMenuProductoMasVendido(),
+                    CrearSubMenuBuscarProducto(),
+                    CrearSubMenuCrearProducto()
                 }
             };
 
             return coleccionMenu;
         }
 
-      
+        /// <summary>
+        /// Crea el menu principal de 7 opciones
+        /// </summary>
+        /// <returns></returns>
         private Menu CrearMenuPrincipal()
         {
             return new Menu()
@@ -52,10 +62,12 @@ namespace PrimerParcialConsola
                     new MenuItem()
                     {
                         Descripcion = "Buscar Productos",
+                        SubMenuId = 6
                     },
                     new MenuItem()
                     {
                         Descripcion = "Agregar nuevo Producto",
+                        SubMenuId = 7
                     },
                     new MenuItem()
                     {
@@ -79,6 +91,10 @@ namespace PrimerParcialConsola
             };
         }
 
+        /// <summary>
+        /// Crea el submenu de mostrar productos
+        /// </summary>
+        /// <returns></returns>
         private Menu CrearSubMenuMostrarProducto()
         {
             return new Menu()
@@ -105,6 +121,11 @@ namespace PrimerParcialConsola
                     },
                     new MenuItem()
                     {
+                        Descripcion = "Mostrar Producto mas vendido",
+                        SubMenuId = 5
+                    },
+                    new MenuItem()
+                    {
                         Descripcion = "Volver al menu principal",
                         SubMenuId = 1
                     }
@@ -112,6 +133,10 @@ namespace PrimerParcialConsola
             };
         }
 
+        /// <summary>
+        /// Crea el submenu que muestra las categorias
+        /// </summary>
+        /// <returns></returns>
         private Menu CrearSubMenuCategoria()
         {
             return new Menu()
@@ -153,6 +178,10 @@ namespace PrimerParcialConsola
             };
         }
 
+        /// <summary>
+        /// Crea el submenu de Stock (sin stock, menor a 100, mayor a 100)
+        /// </summary>
+        /// <returns></returns>
         private Menu CrearSubMenuSegunStock()
         {
             return new Menu()
@@ -184,6 +213,93 @@ namespace PrimerParcialConsola
                         Descripcion = "Volver al menu principal",
                         SubMenuId = 1
                     }
+                }
+            };
+        }
+
+        /// <summary>
+        /// Crea el submenu de producto mas vendido
+        /// </summary>
+        /// <returns></returns>
+        private Menu CrearSubMenuProductoMasVendido()
+        {
+            return new Menu()
+            {
+                MenuId = 5,
+                Descripcion = "PRODUCTOS MAS VENDIDO",
+                MenuItems =
+                {
+                    new MenuItem()
+                    {
+                        Descripcion = "Producto Mas vendido",
+                        Accion = () => productoService.ProductoMasVendido(),
+                        SubMenuId = 1
+                    },
+                    new MenuItem()
+                    {
+                        Descripcion = "Volver al menu principal",
+                        SubMenuId = 1
+                    },
+                }
+            };
+        }
+
+        /// <summary>
+        /// Crea el submenu de Buscar Producto
+        /// </summary>
+        /// <returns></returns>
+        private Menu CrearSubMenuBuscarProducto()
+        {
+            return new Menu()
+            {
+                MenuId = 6,
+                Descripcion = "BUSCAR PRODUCTO",
+                MenuItems =
+                {
+                    new MenuItem()
+                    {
+                        Descripcion = "Buscar Producto por Nombre",
+                        Accion = () => productoService.BuscarProdPorNombre(),
+                        SubMenuId = 1
+                    },
+                    new MenuItem()
+                    {
+                        Descripcion = "Buscar Producto por Id",
+                        Accion = () => productoService.BuscarProdPorId(),
+                        SubMenuId = 1
+                    },
+                    new MenuItem()
+                    {
+                        Descripcion = "Volver al menu principal",
+                        SubMenuId = 1
+                    },
+                }
+            };
+        }
+
+        /// <summary>
+        /// Crea el submenu de crear producto
+        /// </summary>
+        /// <returns></returns>
+        private Menu CrearSubMenuCrearProducto()
+        {
+            return new Menu()
+            {
+                MenuId = 7,
+                Descripcion = "CREAR PRODUCTO",
+                MenuItems =
+                {
+                    new MenuItem()
+                    {
+                        Descripcion = "Crear Producto",
+                        Accion = () => productoService.CrearProducto(),
+                        SubMenuId = 1
+                    },
+                    new MenuItem()
+                    {
+                        Descripcion = "Volver al menu principal",
+                        SubMenuId = 1
+                    },
                 }
             };
         }
